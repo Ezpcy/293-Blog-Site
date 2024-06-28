@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const latestSection: HTMLElement | null = document.getElementById('latestArticles');
     if (latestSection) {
         fetchArticles().then((articles: Articles) => {
-            latestSection!.innerHTML = ''; // Clear the section before adding new content
+            latestSection!.textContent = ''; // Clear the section before adding new content
             if (!articles) {
                 const errorElement = document.createElement('h1');
                 errorElement.textContent = 'No articles found';
@@ -101,12 +101,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const  urlParams = new URLSearchParams(window.location.search);
         const articleId = urlParams.get('id');
         if (!articleId) {
-            articleSection.innerHTML = '<h1>Article not found</h1>';
+            articleSection.textContent = '<h1>Article not found</h1>';
             return;
         }
         const articleIdNumber = parseInt(articleId);
         fetchArticle(articleIdNumber).then((article: Article) => {
-            articleSection.innerHTML = ''; // Clear the section before adding new content
+            articleSection.textContent = ''; // Clear the section before adding new content
             const hasLiked = localStorage.getItem(articleIdNumber.toString())
 
 
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(allArticleSection) {
         const topicFilter = document.getElementById('topic-filter') as HTMLSelectElement;
         if (topicFilter) {
-            topicFilter.innerHTML = '';
+            topicFilter.textContent = '';
             const topics = ["All", "Rust", "WebDev"]
             const topic = localStorage.getItem('topic');
             topics.forEach(topica => {
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         fetchByTopic(localStorage.getItem("topic") || "All").then((articles: Articles) => {
 
-            allArticleSection.innerHTML = ''; // Clear the section before adding new content
+            allArticleSection.textContent = ''; // Clear the section before adding new content
             if (!articles) {
                 const errorElement = document.createElement('h1');
                 errorElement.textContent = 'No articles found';
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const pagination = document.getElementById('pagination');
             const currentPage = localStorage.getItem('currentPage');
             if (pagination) {
-                pagination.innerHTML = '';
+                pagination.textContent = '';
                 for (let i = 1; i <= pages; i++) {
                     const pageLink = document.createElement('li');
                     if (currentPage && parseInt(currentPage) === i) {
