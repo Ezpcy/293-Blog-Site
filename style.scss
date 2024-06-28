@@ -75,7 +75,7 @@ a {
   cursor: pointer;
   padding-top: 20px;
   padding-bottom: 20px;
-  margin-right: 15px;
+  margin-right: 7px;
 }
 
 body {
@@ -501,11 +501,12 @@ main {
       font-weight: 600;
       font-size: 1.2rem;
       line-height: 2rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+
       a {
         color: unset;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       &:hover {
         color: $highlight;
@@ -888,10 +889,19 @@ form {
 
 #all-articles {
   display: grid;
+
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  grid-template-rows: 1fr;
   @include tablet() {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .article-card {
+    .article-info {
+      .article-card-header {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
   }
 }
 

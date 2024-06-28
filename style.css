@@ -31,7 +31,7 @@ a:hover {
   cursor: pointer;
   padding-top: 20px;
   padding-bottom: 20px;
-  margin-right: 15px;
+  margin-right: 7px;
 }
 
 body {
@@ -489,12 +489,12 @@ main .hero-text p {
   font-weight: 600;
   font-size: 1.2rem;
   line-height: 2rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 .article-card .article-info .article-card-header a {
   color: unset;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .article-card .article-info .article-card-header:hover {
   color: #8f8f8f;
@@ -918,12 +918,16 @@ form textarea:focus {
 #all-articles {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  grid-template-rows: 1fr;
 }
 @media screen and (max-width: 768px) {
   #all-articles {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
+}
+#all-articles .article-card .article-info .article-card-header {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .articles-pages {
