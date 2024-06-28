@@ -72,15 +72,15 @@
     },
     {
       "id": 4,
-      "title": "Deserialization in Rust",
+      "title": "Arc and Mutex in Rust",
       "topics": "Rust",
-      "html_file": "/articles/html/Deserializer.html",
+      "html_file": "/articles/html/Arc and Mutex in Rust.html",
       "author": "Batuhan Seker",
       "author_image": "../images/profile.png",
       "banner": "../images/rust.png",
       "tags": ["rust", "serialization"],
       "date": "Jun 29 2024",
-      "summary": "Deserialization is the process of converting data that has been serialized into a format that can be used by a program. In Rust, the serde library provides a powerful and flexible framework for deserializing data. In this article, we'll take a look at how to use serde to deserialize data in Rust, and explore some of the features that make it such a useful tool.",
+      "summary": "The Arc and Mutex types in Rust are powerful tools for sharing data between threads in a safe and efficient way. Arc provides shared ownership of a value, and Mutex provides mutable access to the value. In this article, we'll take a look at how to use Arc and Mutex to share data between threads, and explore some of the features that make them such useful tools for writing concurrent programs.",
       "likes": 2,
       "comments": [
         {
