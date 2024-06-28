@@ -142,6 +142,7 @@ header .mobile-menu {
   }
   header .mobile-menu ul {
     position: absolute;
+    border-bottom: 1px solid #323232;
     left: 0;
     max-height: 0px;
     overflow: hidden;
@@ -914,11 +915,11 @@ form textarea:focus {
 
 #all-articles {
   display: grid;
-  grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr);
+  grid-template-columns: 1fr, 1fr;
 }
 @media screen and (max-width: 768px) {
   #all-articles {
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
   }
 }
 

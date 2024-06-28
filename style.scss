@@ -158,7 +158,6 @@ header {
     .mobile-menu {
       .hamburger {
         display: flex;
-
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -184,6 +183,7 @@ header {
       display: flex;
       ul {
         position: absolute;
+        border-bottom: 1px solid $border;
         left: 0;
         max-height: 0px;
         overflow: hidden;
@@ -193,6 +193,7 @@ header {
         top: 100%;
         z-index: 100;
         transition: all 0.3s;
+
         @include dark {
           background: $paper;
           color: $text;
@@ -887,7 +888,7 @@ form {
   display: grid;
   grid-template-columns: 1fr, 1fr;
   @include tablet() {
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
   }
 }
 
