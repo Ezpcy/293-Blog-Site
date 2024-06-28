@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const allArticleSection = document.getElementById("all-articles");
     if (!allArticleSection) {
-        localStorage.removeItem('currentPage');
+        localStorage.setItem('currentPage', '1');
         localStorage.removeItem('topic');
     }
     if(allArticleSection) {
