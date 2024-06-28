@@ -888,9 +888,10 @@ form {
 
 #all-articles {
   display: grid;
-  grid-template-columns: 1fr, 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: 1fr;
   @include tablet() {
-    grid-template-columns: 100%;
+    grid-template-columns: 1fr;
   }
 }
 
