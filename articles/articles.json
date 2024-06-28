@@ -1,0 +1,208 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Actors and Concurrent Applications",
+      "topics": "Rust",
+      "html_file": "/articles/html/Actors and Concurrent Applications.html",
+      "author": "Batuhan Seker",
+      "author_image": "../images/profile.png",
+      "banner": "../images/rust.png",
+      "tags": ["rust", "concurrency"],
+      "date": "Jun 21 2024",
+      "summary": "An actor is useful when you want to handle data in a concurrent way. An actor is a type of object that is an independent unit of computation. It has a mailbox for receiving messages, and it can send messages to other actors. It can also create new actors. An actor can only do one thing at a time, and it can only do that one thing in response to a message. This makes it easy to reason about the behavior of an actor, and it makes it easy to write concurrent programs.",
+      "likes": 3,
+      "comments": [
+        {
+          "author": "John Doe",
+          "date": "Jun 22 2024",
+          "comment": "Great article! I learned a lot about actors and concurrency."
+        },
+        {
+          "author": "Jane Doe",
+          "date": "Jun 23 2024",
+          "comment": "I didn't know that actors were so useful. Thanks for the explanation!"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "TCPListener API",
+      "topics": "Rust",
+      "html_file": "/articles/html/TCPListener API.html",
+      "author": "Batuhan Seker",
+      "author_image": "../images/profile.png",
+      "banner": "../images/rust.png",
+      "tags": ["rust", "networking"],
+      "date": "Jun 26 2024",
+      "summary": "The TCPListener API is a powerful tool for creating networked applications in Rust. It allows you to create a TCP server that listens for incoming connections, and then handle those connections in a way that is efficient and secure. In this article, we'll take a look at how to use the TCPListener API to create a simple echo server that listens for incoming connections on a specified port, and then echoes back any data that is sent to it.",
+      "likes": 5,
+      "comments": [
+        {
+          "author": "John Doe",
+          "date": "Jun 27 2024",
+          "comment": "I've been looking for a good tutorial on the TCPListener API. This is exactly what I needed!"
+        },
+        {
+          "author": "Jane Doe",
+          "date": "Jun 28 2024",
+          "comment": "I didn't know that Rust had such a powerful networking API. Thanks for the explanation!"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "PWA Setup",
+      "topics": "WebDev",
+      "html_file": "/articles/html/PWA Setup.html",
+      "author": "Batuhan Seker",
+      "author_image": "../images/profile.png",
+      "banner": "../images/webdev.jpg",
+      "tags": ["mobile", "webdev"],
+      "date": "Jun 28 2024",
+      "summary": "Progressive Web Apps (PWAs) are web applications that are regular web pages or websites, but can appear to the user like traditional applications or native mobile applications.",
+      "likes": 3,
+      "comments": [
+        {
+          "author": "Elon Musk",
+          "date": "Jun 28 2024",
+          "comment": "Great article! I learned a lot about PWAs."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Deserialization in Rust",
+      "topics": "Rust",
+      "html_file": "/articles/html/Deserializer.html",
+      "author": "Batuhan Seker",
+      "author_image": "../images/profile.png",
+      "banner": "../images/rust.png",
+      "tags": ["rust", "serialization"],
+      "date": "Jun 29 2024",
+      "summary": "Deserialization is the process of converting data that has been serialized into a format that can be used by a program. In Rust, the serde library provides a powerful and flexible framework for deserializing data. In this article, we'll take a look at how to use serde to deserialize data in Rust, and explore some of the features that make it such a useful tool.",
+      "likes": 2,
+      "comments": [
+        {
+          "author": "Biggie Smalls",
+          "date": "Jun 30 2024",
+          "comment": "This article was so good, i came back to live to comment on it."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Production Node.js applications with PM2",
+      "topics": "WebDev",
+      "html_file": "/articles/html/Production Node.js applications with PM2.html",
+      "author": "Batuhan Seker",
+      "author_image": "../images/profile.png",
+      "banner": "../images/webdev.jpg",
+      "tags": ["nodejs", "webdev"],
+      "date": "Jun 29 2024",
+      "summary": "PM2 is a process manager for Node.js applications. It allows you to keep your applications running in the background, and provides features like automatic restarts, logging, and monitoring. In this article, we'll take a look at how to use PM2 to manage your Node.js applications in a production environment, and explore some of the features that make it such a useful tool.",
+      "likes": 4,
+      "comments": []
+    },
+    {
+      "id": 6,
+      "title": "Typescript Setup",
+      "topics": "WebDev",
+      "html_file": "/articles/html/Typescript Setup.html",
+      "author": "Batuhan Seker",
+      "author_image": "../images/profile.png",
+      "banner": "../images/webdev.jpg",
+      "tags": ["typescript", "webdev"],
+      "date": "Jun 29 2024",
+      "summary": "TypeScript is a superset of JavaScript that adds static typing to the language. It is designed for the development of large applications and transcompiles to JavaScript.",
+      "likes": 3,
+      "comments": [
+        {
+          "author": "Bill Gates",
+          "date": "Jun 29 2024",
+          "comment": "Great article! I learned a lot about TypeScript."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Tokio Select!",
+      "topics": "Rust",
+      "html_file": "/articles/html/Tokio select!.html",
+      "author": "Batuhan Seker",
+      "author_image": "../images/profile.png",
+      "banner": "../images/rust.png",
+      "tags": ["rust", "concurrency"],
+      "date": "Jun 29 2024",
+      "summary": "The Tokio select! macro is a powerful tool for handling multiple asynchronous tasks in Rust. It allows you to wait for multiple futures to complete, and then take action based on the result of the first future to complete. In this article, we'll take a look at how to use the Tokio select! macro to create a simple example that demonstrates its power and flexibility.",
+      "likes": 3,
+      "comments": [
+        {
+          "author": "Mark Zuckerberg",
+          "date": "Jun 29 2024",
+          "comment": "Great article! I learned a lot about the Tokio select! macro."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Rust BufReader",
+      "topics": "Rust",
+      "html_file": "/articles/html/BufReader.html",
+      "author": "Batuhan Seker",
+      "author_image": "../images/profile.png",
+      "banner": "../images/rust.png",
+      "tags": ["rust", "io"],
+      "date": "Jun 29 2024",
+      "summary": "The BufReader struct in Rust is a convenient way to read data from a file or other input source. It provides a buffered interface that can improve performance when reading data in small chunks. In this article, we'll take a look at how to use the BufReader struct to read data from a file, and explore some of the features that make it such a useful tool.",
+      "likes": 3,
+      "comments": [
+        {
+          "author": "Steve Jobs",
+          "date": "Jun 29 2024",
+          "comment": "Great article! I learned a lot about the BufReader struct."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Rust Threads and Communication",
+      "topics": "Rust",
+      "html_file": "/articles/html/Rust Threads and Communication.html",
+      "author": "Batuhan Seker",
+      "author_image": "../images/profile.png",
+      "banner": "../images/rust.png",
+      "tags": ["rust", "concurrency"],
+      "date": "Jun 29 2024",
+      "summary": "Rust provides a powerful set of tools for working with threads and communication between threads. In this article, we'll take a look at how to create and manage threads in Rust, and explore some of the features that make it such a useful tool for writing concurrent programs.",
+      "likes": 3,
+      "comments": [
+        {
+          "author": "Tim Cook",
+          "date": "Jun 29 2024",
+          "comment": "Great article! I learned a lot about Rust threads and communication."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Running Tests with Rust",
+      "topics": "Rust",
+      "html_file": "/articles/html/Running Tests with Rust.html",
+      "author": "Batuhan Seker",
+      "author_image": "../images/profile.png",
+      "banner": "../images/rust.png",
+      "tags": ["rust", "testing"],
+      "date": "Jun 29 2024",
+      "summary": "Rust provides a powerful testing framework that makes it easy to write and run tests for your code. In this article, we'll take a look at how to write tests in Rust, and explore some of the features that make it such a useful tool for writing reliable and maintainable code.",
+      "likes": 3,
+      "comments": [
+        {
+          "author": "Larry Page",
+          "date": "Jun 29 2024",
+          "comment": "Great article! I learned a lot about running tests with Rust."
+        }
+      ]
+    }
+  ]
+}

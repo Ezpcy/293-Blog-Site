@@ -1,0 +1,85 @@
+<h1>Production Node.js applications with PM2</h1>
+<p>PM2 is a popular process manager for Node.js applications. It helps in managing and keeping applications online, automatically restarting them if they crash, and simplifying common administrative tasks. Here's a cheat sheet covering what PM2 does and its most useful commands:</p>
+<h2><strong>What PM2 Does:</strong></h2>
+<ul>
+<li><strong>Starts/Stops/Restarts Node.js applications.</strong></li>
+<li><strong>Keeps applications running indefinitely.</strong> Auto-restarts apps if they crash.</li>
+<li><strong>Load Balancing:</strong> Can run multiple instances of applications to enhance performance.</li>
+<li><strong>Monitoring:</strong> Offers basic monitoring features for your applications (CPU, memory usage).</li>
+<li><strong>Log Management:</strong> Keeps track of application logs.</li>
+<li><strong>Cluster Mode:</strong> Enables running applications in cluster mode without changing code.</li>
+<li><strong>Startup Scripts:</strong> Automatically restarts applications when the server reboots.</li>
+</ul>
+<h2><strong>Basic PM2 Commands:</strong></h2>
+<ol>
+<li><p><strong>Starting an Application:</strong></p>
+<pre><code class="language-bash">pm2 start app.js
+pm2 start app.js --name "myApp"  # Start with a custom name
+</code></pre>
+</li>
+<li><p><strong>Listing Running Processes:</strong></p>
+<pre><code class="language-bash">pm2 list
+</code></pre>
+</li>
+<li><p><strong>Monitoring Application Logs, CPU, and Memory:</strong></p>
+<pre><code class="language-bash">pm2 monit
+</code></pre>
+</li>
+<li><p><strong>Stopping an Application:</strong></p>
+<pre><code class="language-bash">pm2 stop app_name_or_id
+</code></pre>
+</li>
+<li><p><strong>Restarting an Application:</strong></p>
+<pre><code class="language-bash">pm2 restart app_name_or_id
+</code></pre>
+</li>
+<li><p><strong>Deleting an Application from PM2's List:</strong></p>
+<pre><code class="language-bash">pm2 delete app_name_or_id
+</code></pre>
+</li>
+<li><p><strong>Displaying Logs:</strong></p>
+<pre><code class="language-bash">pm2 logs
+pm2 logs app_name_or_id  # View logs for a specific app
+</code></pre>
+</li>
+<li><p><strong>Reloading an Application:</strong></p>
+<ul>
+<li>Gracefully restarts all processes of the specified application:<pre><code class="language-bash">pm2 reload app_name_or_id
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><strong>Scaling Applications (Cluster Mode):</strong></p>
+<pre><code class="language-bash">pm2 scale app_name number_of_instances
+</code></pre>
+</li>
+<li><p><strong>Startup Script Generation:</strong></p>
+<ul>
+<li>Generates a startup script to respawn PM2 and its processes on boot:<pre><code class="language-bash">pm2 startup
+</code></pre>
+</li>
+<li>After running <strong><code>pm2 startup</code></strong>, you'll get a command to execute with superuser privileges.</li>
+</ul>
+</li>
+<li><p><strong>Saving the Current Process List:</strong></p>
+<pre><code class="language-bash">pm2 save
+</code></pre>
+</li>
+<li><p><strong>Resurrecting Previously Saved Processes:</strong></p>
+<pre><code class="language-bash">pm2 resurrect
+</code></pre>
+</li>
+<li><p><strong>Updating PM2:</strong></p>
+<pre><code class="language-bash">pm2 update
+</code></pre>
+</li>
+</ol>
+<h2><strong>Additional Notes:</strong></h2>
+<br>
+
+<ul>
+<li><strong>PM2 Configuration File:</strong> You can also manage applications using an ecosystem configuration file (<strong><code>ecosystem.config.js</code></strong>), which allows for more complex setups.</li>
+<li><strong>Cluster Mode:</strong> Useful for taking full advantage of multi-core systems, but it's important to note that not all applications are suitable for running in cluster mode.</li>
+<li><strong>Environment Variables:</strong> PM2 allows you to inject environment variables directly from the command line or via an ecosystem file.</li>
+<li><strong>Log Rotation:</strong> PM2 has a module to manage log rotation, which can be vital for applications with extensive logging.</li>
+</ul>

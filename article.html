@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.min.css" />
+    <link rel="shortcut icon" href="HomeLogo.ico" type="image/x-icon" />
+    <title>Batu's Blog</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <a href="index.html"
+          ><img src="./images/logo/Logo%20sm.png" alt="logo"
+        /></a>
+      </div>
+
+      <!-- Desktop Menu !-->
+      <nav class="desk-menu">
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/articles.html">Articles</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Menu !-->
+      <nav class="mobile-menu">
+        <div class="hamburger" id="toggleMenu">
+          <span id="line1"></span>
+          <span id="line2"></span>
+          <span id="line3"></span>
+        </div>
+        <ul id="mobile-menu-list">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./articles.html">Articles</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="be-head">
+      <section id="current-article"></section>
+      <hr />
+      <h3 class="h3-highlight">Submit a Comment</h3>
+      <section class="container">
+        <form id="comment-form" onsubmit="event.preventDefault()">
+          <label for="author">Name:</label>
+          <input type="text" id="author" name="author" required />
+          <label for="commentText">Comment:</label>
+          <textarea
+            id="commentText"
+            name="commentText"
+            maxlength="500"
+            rows="5"
+            required
+          ></textarea>
+          <button class="a-button" type="submit">Submit</button>
+        </form>
+      </section>
+      <hr />
+      <h3 class="h3-highlight">Comments</h3>
+      <section id="comments"></section>
+    </main>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo"></div>
+        <div class="footer-text">
+          <p>Batu's Blog &copy; 2024</p>
+          <p>All rights reserved</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      var exports = {};
+    </script>
+    <script src="./dist/bundle.min.js"></script>
+    <link
+      id="lightTheme"
+      href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css"
+      rel="stylesheet"
+    />
+    <link
+      id="darkTheme"
+      href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/dark.min.css"
+      rel="stylesheet"
+      disabled
+    />
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<h1>Running Tests with Rust</h1>
+<h2>The <code>test</code> Attribute</h2>
+<p>In simple term, the <code>test</code> attribute is used to mark a function as a test function. When you run <code>cargo test</code>, Rust will compile the test functions into a test harness and run them.</p>
+<pre><code class="language-rust">#[test]
+fn test_function() {
+    assert_eq!(1, 1);
+}
+</code></pre>
+<h3>Testing flags</h3>
+<ul>
+<li><code>#[ignore]</code> - This attribute is used to ignore a test function.</li>
+<li><code>#[should_panic]</code> - This attribute is used to test that a function panics.</li>
+<li><code>#[should_panic(expected = "error message")]</code> - This attribute is used to test that a function panics with a specific error message.</li>
+</ul>
+<pre><code class="language-rust">#[test]
+#[should_panic]
+fn test_function() {
+    panic!("This test should panic");
+}
+</code></pre>
+<p>There are also other attributes that can be used to test functions.</p>
+<h2>Running Tests</h2>
+<p>To run tests, you can use the <code>cargo test</code> command. This command will compile the test functions into a test harness and run them.</p>
+<pre><code class="language-bash">cargo test
+</code></pre>
+<h2>Running a Single Test</h2>
+<p>To run a single test, you can use the <code>--test</code> flag with the <code>cargo test</code> command.</p>
+<pre><code class="language-bash">cargo test --test test_function
+</code></pre>
+<h2>Running Multiple Tests</h2>
+<p>To run multiple tests, you can use the <code>--test</code> flag with the <code>cargo test</code> command.</p>
+<pre><code class="language-bash">cargo test --test test_function1 --test test_function2
+</code></pre>
+<h2>Running Tests in Parallel</h2>
+<p>To run tests in parallel, you can use the <code>--jobs</code> flag with the <code>cargo test</code> command.</p>
+<pre><code class="language-bash">cargo test --jobs 4
+</code></pre>
+<h2>The <code>tests</code> Module</h2>
+<p>You can also create a <code>tests</code> module to organize your test functions.</p>
+<pre><code class="language-rust">#[cfg(test)]
+mod tests {
+    #[test]
+    fn test_function1() {
+        assert_eq!(1, 1);
+    }
+
+    #[test]
+    fn test_function2() {
+        assert_eq!(2, 2);
+    }
+}
+</code></pre>
+<h2>The <code>tests</code> Directory</h2>
+<p>You can also create a <code>tests</code> directory to organize your test functions, create a tests folder at the root of your project.</p>
+<pre><code class="language-rust">#[cfg(test)]
+mod tests {
+    #[test]
+    fn test_function1() {
+        assert_eq!(1, 1);
+    }
+
+    #[test]
+    fn test_function2() {
+        assert_eq!(2, 2);
+    }
+}
+</code></pre>

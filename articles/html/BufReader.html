@@ -1,0 +1,50 @@
+<h1>BufReader</h1>
+<p>Reading files with a buffer in Rust can be efficient, especially for large files or streams, as it allows you to manage how much data you read into memory at once. Rust's standard library provides several ways to read files, but for buffered reading, you'll typically use the <strong><code>BufReader</code></strong> struct from the <strong><code>std::io</code></strong> module. Here's a straightforward step-by-step guide to get you started:</p>
+<h2><strong>Step 1: Open the File</strong></h2>
+<p>First, you need to open the file you want to read. You can use the <strong><code>File</code></strong> struct from the <strong><code>std::fs</code></strong> module for this purpose.</p>
+<pre><code class="language-rust">use std::fs::File;
+
+let file = File::open("path/to/your/file.txt").expect("Failed to open file");
+</code></pre>
+<h2><strong>Step 2: Create a Buffered Reader</strong></h2>
+<p>Once you have a <strong><code>File</code></strong> instance, you can wrap it in a <strong><code>BufReader</code></strong> to read the file in chunks. The <strong><code>BufReader</code></strong> struct is found in the <strong><code>std::io</code></strong> module.</p>
+<pre><code class="language-rust">use std::io::BufReader;
+
+let reader = BufReader::new(file);
+</code></pre>
+<h2><strong>Step 3: Read from the Buffered Reader</strong></h2>
+<p>There are several ways to read from a <strong><code>BufReader</code></strong>, depending on your needs. For example, you can read line by line, read a specific number of bytes at a time, or read until a certain condition is met.</p>
+<h2>Reading Line by Line</h2>
+<p>To read the file line by line, you can use a loop along with the <strong><code>lines</code></strong> method, which returns an iterator over the lines of the file.</p>
+<pre><code class="language-rust">for line_result in reader.lines() {
+    let line = line_result.expect("Failed to read line");
+    println!("{}", line);
+}
+</code></pre>
+<h2>Reading a Specific Number of Bytes</h2>
+<p>If you want to read a specific number of bytes, you can use the <strong><code>read</code></strong> method from the <strong><code>Read</code></strong> trait, which <strong><code>BufReader</code></strong> implements.</p>
+<pre><code class="language-rust">use std::io::Read;
+
+let mut buffer = [0; 1024]; // Buffer size of 1024 bytes
+let bytes_read = reader.read(&amp;mut buffer).expect("Failed to read data");
+
+println!("Bytes read: {}", bytes_read);
+</code></pre>
+<h2><strong>Complete Example</strong></h2>
+<p>Combining all the steps, here's a complete example that opens a file, wraps it in a <strong><code>BufReader</code></strong>, and reads it line by line:</p>
+<pre><code class="language-rust">use std::fs::File;
+use std::io::{self, BufRead, BufReader};
+
+fn main() -&gt; io::Result&lt;()&gt; {
+    let file = File::open("path/to/your/file.txt")?;
+    let reader = BufReader::new(file);
+
+    for line_result in reader.lines() {
+        let line = line_result?;
+        println!("{}", line);
+    }
+
+    Ok(())
+}
+</code></pre>
+<p>This example includes basic error handling using Rust's <strong><code>Result</code></strong> type. The <strong><code>?</code></strong> operator is used to propagate errors out of the <strong><code>main</code></strong> function if they occur.</p>

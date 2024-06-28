@@ -1,0 +1,199 @@
+<h1>PWA Setup</h1>
+<h2>What is PWA?</h2>
+<p>Progressive Web Apps (PWAs) are web applications that are regular web pages or websites, but can appear to the user like traditional applications or native mobile applications. The application type attempts to combine features offered by most modern browsers with the benefits of a mobile experience.</p>
+<h2>Setup</h2>
+<p>We're going to build a GPS Tracker.For a simple setup, you'll need following file structure:</p>
+<ul>
+<li>index.html</li>
+<li>manifest.json</li>
+<li>service-worker.js</li>
+<li>style.css</li>
+</ul>
+<h3>index.html</h3>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;title&gt;GPS Tracker PWA&lt;/title&gt;
+    &lt;link rel="stylesheet" href="./styles.css" /&gt;
+    &lt;link rel="manifest" href="manifest.json" /&gt;
+    &lt;link rel="shortcut icon" href="/icons/fire (1).png" type="image/png" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;GPS Tracker&lt;/h1&gt;
+    &lt;div class="buttons"&gt;
+      &lt;button id="startButton"&gt;Start Tracking&lt;/button&gt;
+      &lt;button id="stopButton"&gt;Stop Tracking&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="data"&gt;&lt;pre id="log"&gt;GPS data will appear here...&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;script src="app.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("/service-worker.js").then(
+            function (registration) {
+              // Registration was successful
+              console.log(
+                "ServiceWorker registration successful with scope: ",
+                registration.scope
+              );
+            },
+            function (err) {
+              // registration failed :(
+              console.log("ServiceWorker registration failed: ", err);
+            }
+          );
+        });
+      }
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li>The <code>manifest.json</code> file is a simple JSON file that tells the browser about your web application and how it should behave when 'installed' on the user's mobile device or desktop.</li>
+<li>The <code>service-worker.js</code> file is a JavaScript file that runs in the background of your web app. It's responsible for caching the app shell and handling push notifications.</li>
+</ul>
+<h3>manifest.json</h3>
+<pre><code class="language-json">{
+  "short_name": "GPS Tracker",
+  "name": "Simple GPS Tracker",
+  "icons": [
+    {
+      "src": "./icons/fire.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "index.html",
+  "display": "fullscreen",
+  "background_color": "#FFFFFF",
+  "theme_color": "#000000"
+}
+</code></pre>
+<h3>service-worker.js</h3>
+<pre><code class="language-javascript">// This is the "Offline page" service worker
+
+importScripts(
+  "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
+);
+
+const CACHE = "gpslogger-page";
+
+// TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "offline.html";
+const offlineFallbackPage = "index.html";
+
+self.addEventListener("message", (event) =&gt; {
+  if (event.data &amp;&amp; event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
+});
+
+self.addEventListener("install", async (event) =&gt; {
+  event.waitUntil(
+    caches.open(CACHE).then((cache) =&gt; cache.add(offlineFallbackPage))
+  );
+});
+
+if (workbox.navigationPreload.isSupported()) {
+  workbox.navigationPreload.enable();
+}
+
+self.addEventListener("fetch", (event) =&gt; {
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      (async () =&gt; {
+        try {
+          const preloadResp = await event.preloadResponse;
+
+          if (preloadResp) {
+            return preloadResp;
+          }
+
+          const networkResp = await fetch(event.request);
+          return networkResp;
+        } catch (error) {
+          const cache = await caches.open(CACHE);
+          const cachedResp = await cache.match(offlineFallbackPage);
+          return cachedResp;
+        }
+      })()
+    );
+  }
+});
+</code></pre>
+<ul>
+<li>The <code>service-worker.js</code> file is a JavaScript file that runs in the background of your web app. It's responsible for caching the app shell and handling push notifications.</li>
+</ul>
+<p>Let's quickly go through the code:</p>
+<pre><code class="language-javascript">importScripts(
+  "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
+);
+</code></pre>
+<ul>
+<li>This line imports the Workbox library, which is a set of libraries and Node modules that make it easy to cache assets and take full advantage of features used to build Progressive Web Apps.</li>
+</ul>
+<pre><code class="language-javascript">const CACHE = "gpslogger-page";
+</code></pre>
+<ul>
+<li>This line defines the name of the cache.</li>
+</ul>
+<pre><code class="language-javascript">const offlineFallbackPage = "index.html";
+</code></pre>
+<ul>
+<li>This line defines the offline fallback page.</li>
+</ul>
+<pre><code class="language-javascript">self.addEventListener("message", (event) =&gt; {
+  if (event.data &amp;&amp; event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
+});
+</code></pre>
+<ul>
+<li>This code listens for a message from the client and skips the waiting state. This is useful when you want to update the service worker and activate it immediately. Skipping the waiting state ensures that the new service worker is activated immediately.</li>
+</ul>
+<pre><code class="language-javascript">self.addEventListener("install", async (event) =&gt; {
+  event.waitUntil(
+    caches.open(CACHE).then((cache) =&gt; cache.add(offlineFallbackPage))
+  );
+});
+</code></pre>
+<ul>
+<li>This code listens for the install event and caches the offline fallback page. This is the page that will be displayed when the user is offline.</li>
+</ul>
+<pre><code class="language-javascript">if (workbox.navigationPreload.isSupported()) {
+  workbox.navigationPreload.enable();
+}
+</code></pre>
+<ul>
+<li>This code checks if the navigation preload feature is supported and enables it. Navigation preload is a feature that allows the service worker to start fetching resources before the page is loaded.</li>
+</ul>
+<pre><code class="language-javascript">self.addEventListener("fetch", (event) =&gt; {
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      (async () =&gt; {
+        try {
+          const preloadResp = await event.preloadResponse;
+
+          if (preloadResp) {
+            return preloadResp;
+          }
+
+          const networkResp = await fetch(event.request);
+          return networkResp;
+        } catch (error) {
+          const cache = await caches.open(CACHE);
+          const cachedResp = await cache.match(offlineFallbackPage);
+          return cachedResp;
+        }
+      })()
+    );
+  }
+});
+</code></pre>
+<ul>
+<li>This code listens for the fetch event and responds with the offline fallback page when the user is offline. This ensures that the user always has something to see when they are offline.</li>
+</ul>
+<h2>Deploy</h2>
+<p>To make this a PWA, you need to deploy it on a server. You can use GitHub Pages, Netlify, or any other hosting service. It has to be served over HTTPS to work as a PWA. Once you deploy it, you can access it on your mobile device or desktop browser. You'll see an option to install the app on your device.</p>

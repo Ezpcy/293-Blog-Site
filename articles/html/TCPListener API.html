@@ -1,0 +1,104 @@
+<h1>TCP Listener API</h1>
+<h2>TCP</h2>
+<p><code>TCP</code> is a protocol that is used to establish a connection between two devices. It is a connection-oriented protocol, which means that it establishes a connection before sending data and ensures that the data is delivered in the correct order. TCP is widely used in applications that require reliable data transfer, such as web browsing, email, and file transfer.</p>
+<h2>TCP Listener in Rust</h2>
+<p>In Rust, you can create a TCP listener using the <code>TcpListener</code> struct from the <code>std::net</code> module. The <code>TcpListener</code> struct allows you to listen for incoming TCP connections on a specific port and address. Here is an example of how to create a TCP listener in Rust with <code>tokio</code>:</p>
+<pre><code class="language-rust">use tokio::{
+    io::{AsyncReadExt, AsyncWriteExt},
+    net::TcpListener,
+};
+
+#[tokio::main]
+async fn main() -&gt; std::io::Result&lt;()&gt; {
+
+    let listener = TcpListener::bind("127.0.0.1:8080").await?;
+
+    loop {
+        let (mut socket, _) = listener.accept().await?;
+
+        tokio::spawn(async move {
+            if let Err(e) = handle_connection(&amp;mut socket).await {
+                error!("Failed to handle connection: {}", e);
+                eprintln!("Failed to handle connection: {}", e);
+            }
+        });
+    }
+}
+</code></pre>
+<p>In this example, we create a <code>TcpListener</code> that listens for incoming connections on <code>127.0.0.1:8080</code>. When a connection is established, we spawn a new task to handle the connection asynchronously. The <code>handle_connection</code> function is responsible for processing the incoming data and responding to the client.</p>
+<pre><code class="language-rust">async fn handle_connection(socket: &amp;mut tokio::net::TcpStream) -&gt; std::io::Result&lt;()&gt; {
+    let mut buf = [0; 1024];
+    let n = socket.read(&amp;mut buf).await?;
+
+    if n == 0 {
+        return Ok(());
+    }
+
+    let request = String::from_utf8_lossy(&amp;buf[..n]);
+    println!("Received request: {}", request);
+
+    let response = "Hello, world!\n";
+    socket.write_all(response.as_bytes()).await?;
+
+    Ok(())
+}
+</code></pre>
+<p>You might run into problems with the buffer size, as the buffer size is fixed in this example. You can handle this by dynamically resizing the buffer or using a more advanced buffer management system.</p>
+<p>We can us a <code>loop</code> in which we read the incoming data in chunks, process it accordingly and break if the read size equals 0. This way, we can handle large amounts of data without running into buffer size limitations.</p>
+<pre><code class="language-rust">async fn handle_connection(socket: &amp;mut tokio::net::TcpStream) -&gt; std::io::Result&lt;()&gt; {
+    let mut buf = vec![0; 1024];
+
+    loop {
+        let n = socket.read(&amp;mut buf).await?;
+
+        if n == 0 {
+            break;
+        }
+
+        let request = String::from_utf8_lossy(&amp;buf[..n]);
+        println!("Received request: {}", request);
+
+        let response = "Hello, world!\n";
+        socket.write_all(response.as_bytes()).await?;
+    }
+
+    Ok(())
+}
+</code></pre>
+<p>What you also might want to do, is to clear the buffer after each iteration, to avoid processing old data. You can do this by calling <code>buf.clear()</code> at the end of the loop.</p>
+<pre><code class="language-rust">async fn handle_connection(socket: &amp;mut tokio::net::TcpStream) -&gt; std::io::Result&lt;()&gt; {
+    let mut buf = vec![0; 1024];
+
+    loop {
+        let n = socket.read(&amp;mut buf).await?;
+
+        if n == 0 {
+            break;
+        }
+
+        let request = String::from_utf8_lossy(&amp;buf[..n]);
+        println!("Received request: {}", request);
+
+        let response = "Hello, world!\n";
+        socket.write_all(response.as_bytes()).await?;
+
+        buf.clear();
+    }
+
+    Ok(())
+}
+</code></pre>
+<p>Or you use another <code>Vec</code> to store the incoming data:</p>
+<pre><code class="language-rust">let mut buffer = [0; 4096];
+let mut request = Vec::new();
+
+loop {
+    let bytes_read = socket.read(&amp;mut buffer).await?;
+
+    if bytes_read == 0 {
+        break;
+    }
+
+    request.extend_from_slice(&amp;buffer[..bytes_read]);
+}
+</code></pre>

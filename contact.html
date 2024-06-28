@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.min.css" />
+    <link rel="shortcut icon" href="HomeLogo.ico" type="image/x-icon" />
+    <title>Batu's Blog</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <a href="index.html"
+          ><img src="./images/logo/Logo%20sm.png" alt="logo"
+        /></a>
+      </div>
+
+      <!-- Desktop Menu !-->
+      <nav class="desk-menu">
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./articles.html">Articles</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Menu !-->
+      <nav class="mobile-menu">
+        <div class="hamburger" id="toggleMenu">
+          <span id="line1"></span>
+          <span id="line2"></span>
+          <span id="line3"></span>
+        </div>
+        <ul id="mobile-menu-list">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./articles.html">Articles</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="be-head">
+      <section>
+        <h1 class="h1-highlight">Contact</h1>
+        <div class="sec-container">
+          <h2 class="highlight">Our Authors</h2>
+          <article class="author-card">
+            <img src="./images/profiles.png" alt="" />
+            <div class="author-site-info">
+              <h2 style="font-weight: 600">Batuhan Seker</h2>
+              <p>Web Developer &nbsp; ● &nbsp; Full Stack</p>
+              <p>Switzerland &nbsp; ● &nbsp; Joined 20 Jun 2024</p>
+              <p></p>
+            </div>
+            <hr />
+            <p>
+              Batuhan Seker is a passionate developer specializing in Rust and
+              web development. With a keen eye for detail and a deep
+              understanding of modern programming paradigms, Batuhan has built a
+              reputation for crafting robust and efficient software solutions.
+              His blog is a treasure trove of insights, tutorials, and tips
+              aimed at both beginners and seasoned developers looking to enhance
+              their skills in Rust and web technologies. When he's not coding,
+              Batuhan enjoys exploring new tech trends and contributing to
+              open-source projects, always eager to share his knowledge with the
+              developer community.
+            </p>
+          </article>
+        </div>
+      </section>
+      <hr />
+      <section>
+        <h2 class="highlight">Contact us</h2>
+        <div class="text-container">
+          <form id="contact-form" class="contact-form">
+            <label for="topic">Why are you contacting us?</label>
+            <select id="topic" name="topic">
+              <option value="general">General Inquiry</option>
+              <option value="feedback">Feedback</option>
+              <option value="bug">Report a Bug</option>
+              <option value="other">Other</option>
+            </select>
+            <label for="name"></label>
+            <input
+              type="text"
+              id="names"
+              name="names"
+              placeholder="Name..."
+              required
+            />
+            <label for="email"></label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email..."
+              required
+            />
+            <label for="messagea"></label>
+            <textarea
+              id="messagea"
+              name="messagea"
+              placeholder="Message..."
+              rows="5"
+              required
+            ></textarea>
+            <button type="submit" class="a-button">Subscribe</button>
+            <div id="messages"></div>
+          </form>
+        </div>
+      </section>
+      <hr />
+      <section>
+        <h2 class="highlight">Subscribe to our Newsletter</h2>
+        <div class="text-container">
+          <p>
+            Stay updated with the latest posts and exlusive content straight
+            into your inbox!
+          </p>
+          <form id="newsletter-form">
+            <label for="email"></label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email..."
+              required
+            />
+            <button type="submit" class="a-button">Subscribe</button>
+            <div id="message"></div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo"></div>
+        <div class="footer-text">
+          <p>Batu's Blog &copy; 2024</p>
+          <p>All rights reserved</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      var exports = {};
+    </script>
+    <script src="./dist/bundle.min.js"></script>
+  </body>
+</html>

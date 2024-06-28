@@ -1,0 +1,57 @@
+<h1><strong>Rust Threads and Communication</strong></h1>
+<p>Rust provides powerful features for concurrent programming, one of which is the ability to create threads to perform different tasks simultaneously. However, threads need a way to communicate and share data safely. This is where channels come in.</p>
+<h2><strong>Channels</strong></h2>
+<p>A channel in programming is a way for threads to communicate with each other. Think of it as a pipe: one end sends messages into the pipe (sender), and the other end receives messages out of the pipe (receiver). Channels ensure that data is transferred safely between threads without causing any race conditions.</p>
+<p>In Rust, channels are represented by two halves:</p>
+<ul>
+<li><strong>Sender (tx)</strong>: The "transmitting" part of the channel, used to send messages.</li>
+<li><strong>Receiver (rx)</strong>: The "receiving" part of the channel, used to receive messages.</li>
+</ul>
+<h2><strong>Code Breakdown</strong></h2>
+<ol>
+<li><p><strong>Importing necessary modules:</strong></p>
+<pre><code class="language-rust">use std::thread;
+use std::sync::mpsc::channel;
+</code></pre>
+<p>This imports the <strong><code>thread</code></strong> module for creating threads and the <strong><code>channel</code></strong> function from the <strong><code>mpsc</code></strong> (multiple producer, single consumer) module for creating channels.</p>
+</li>
+<li><p><strong>Creating a channel:</strong></p>
+<pre><code class="language-rust">let (tx, rx) = channel();
+</code></pre>
+<p>This line creates a new channel and returns two ends: <strong><code>tx</code></strong> for sending messages and <strong><code>rx</code></strong> for receiving messages.</p>
+</li>
+<li><p><strong>Creating the sender thread:</strong></p>
+<pre><code class="language-rust">let sender = thread::spawn(move || {
+    tx.send("Hello, thread".to_owned())
+        .expect("Unable to send on channel");
+});
+</code></pre>
+<ul>
+<li><strong><code>thread::spawn</code></strong> starts a new thread.</li>
+<li><strong><code>move || { ... }</code></strong> is a closure that takes ownership of the variables it uses (in this case, <strong><code>tx</code></strong>), allowing the thread to use <strong><code>tx</code></strong> independently of the main thread.</li>
+<li><strong><code>tx.send("Hello, thread".to_owned())</code></strong> sends a message through the channel. <strong><code>.to_owned()</code></strong> is used to create an owned <strong><code>String</code></strong> from the string literal, which is necessary because <strong><code>send</code></strong> takes ownership of its argument.</li>
+<li><strong><code>.expect("Unable to send on channel")</code></strong> handles the case where sending fails (e.g., if the receiving end has been dropped).</li>
+</ul>
+</li>
+<li><p><strong>Creating the receiver thread:</strong></p>
+<pre><code class="language-rust">let receiver = thread::spawn(move || {
+    let value = rx.recv().expect("Unable to receive from channel");
+    println!("{value}");
+});
+</code></pre>
+<ul>
+<li>Similar to the sender, a new thread is spawned for receiving.</li>
+<li><strong><code>rx.recv()</code></strong> blocks the current thread until a message is received or the channel is closed. The received message is stored in <strong><code>value</code></strong>.</li>
+<li><strong><code>println!("{value}")</code></strong> prints the received message to the console.</li>
+</ul>
+</li>
+<li><p><strong>Joining threads:</strong></p>
+<pre><code class="language-rust">sender.join().expect("The sender thread has panicked");
+receiver.join().expect("The receiver thread has panicked");
+</code></pre>
+<ul>
+<li><strong><code>join()</code></strong> waits for each thread to finish its execution. This is important to ensure that the program doesn't exit before the threads complete their tasks.</li>
+<li><strong><code>.expect(...)</code></strong> handles any panics that might occur in the threads.</li>
+</ul>
+</li>
+</ol>

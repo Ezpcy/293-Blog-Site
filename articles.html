@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.min.css" />
+    <link rel="shortcut icon" href="HomeLogo.ico" type="image/x-icon" />
+    <title>Batu's Blog</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <a href="index.html"
+          ><img src="./images/logo/Logo%20sm.png" alt="logo"
+        /></a>
+      </div>
+
+      <!-- Desktop Menu !-->
+      <nav class="desk-menu">
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./articles.html">Articles</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Menu !-->
+      <nav class="mobile-menu">
+        <div class="hamburger" id="toggleMenu">
+          <span id="line1"></span>
+          <span id="line2"></span>
+          <span id="line3"></span>
+        </div>
+        <ul id="mobile-menu-list">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./articles.html">Articles</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="be-head">
+      <section>
+        <h1 class="h1-highlight">Articles</h1>
+        <div class="sec-container">
+          <ul class="topic-filter" id="topic-filter"></ul>
+          <div id="all-articles"></div>
+          <ul class="articles-pages" id="pagination"></ul>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo"></div>
+        <div class="footer-text">
+          <p>Batu's Blog &copy; 2024</p>
+          <p>All rights reserved</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      var exports = {};
+    </script>
+    <script src="./dist/bundle.min.js"></script>
+  </body>
+</html>

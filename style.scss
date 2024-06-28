@@ -1,0 +1,1061 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap");
+
+$bg-light: #ffffff;
+$paper-light: #dadada;
+$paper2-light: #eeeeee;
+$paper3-light: #c7c7c7;
+$text-light: #202020;
+$border-light: #bbbbbb79;
+$hover-color-light: #616161;
+$text2-light: #464646;
+
+$text2: #c0c0c0;
+$bg: #000000;
+$accent: #1b9368;
+$accent2: #e3ce0c;
+$paper: #202020;
+$article-bg: #121212;
+$paper2: #262626;
+$paper3: #313131;
+$text: #dadada;
+$border: #323232;
+$highlight: #8f8f8f;
+$hover-color: #4d4d4d;
+
+/* Screen sizes */
+@mixin mobile {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media screen and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin dark {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
+/* General */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: $accent;
+  &:hover {
+    color: $hover-color;
+    transition: color 0.2s;
+  }
+}
+
+.hamburger {
+  cursor: pointer;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+body {
+  transition: background-color 0.2s ease;
+  transition: color 0.2s ease;
+  font-family: "Reddit Sans", sans-serif;
+  background-color: $bg-light;
+  color: $text-light;
+  @include dark {
+    background-color: $bg;
+    color: $text;
+  }
+  color: $text;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.be-head {
+  @include tablet() {
+    padding-top: 60px;
+  }
+}
+
+header {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+  background: $paper-light;
+  color: $text-light;
+  padding: 15px;
+  position: relative;
+  height: 30px;
+  width: auto;
+
+  .desk-menu ul {
+    display: none;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    li {
+      margin-right: 20px;
+      a {
+        color: $text-light;
+        @include dark {
+          color: $text;
+        }
+        text-decoration: none;
+        &:hover {
+          color: $accent;
+        }
+      }
+    }
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      height: 40px;
+    }
+  }
+
+  @include dark {
+    background: $paper;
+    color: $text;
+  }
+  .mobile-menu {
+    display: none;
+  }
+
+  @include tablet() {
+    position: fixed;
+    width: 96%;
+    z-index: 100;
+    .mobile-menu {
+      .hamburger {
+        display: flex;
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+          span {
+            background: $hover-color-light;
+          }
+          @include dark {
+            span {
+              background: $hover-color;
+            }
+          }
+        }
+
+        span {
+          width: 40px;
+          height: 2px;
+          background: $accent;
+          margin: 3px;
+          transition: transform 0.2s;
+        }
+      }
+      display: flex;
+      ul {
+        position: absolute;
+        left: 0;
+        max-height: 0px;
+        overflow: hidden;
+        width: 100%;
+        background: $paper-light;
+        color: $text-light;
+        top: 100%;
+        z-index: 100;
+        transition: all 0.3s;
+        @include dark {
+          background: $paper;
+          color: $text;
+        }
+        li {
+          display: block;
+          padding: 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-bottom: 1px solid $border-light;
+          &:last-child {
+            border-bottom: none;
+          }
+          a {
+            color: $text-light;
+            @include dark {
+              color: $text;
+            }
+            text-decoration: none;
+            &:hover {
+              color: $accent;
+            }
+          }
+        }
+      }
+    }
+    .desk-menu {
+      display: none;
+    }
+  }
+}
+
+.container {
+  padding: 20px;
+  @include tablet() {
+    padding: 10px;
+  }
+  @include mobile() {
+    padding: 5px;
+  }
+}
+
+p {
+  color: $text-light;
+  @include dark {
+    color: $text;
+  }
+}
+
+.h1-highlight {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  width: fit-content;
+  margin-left: 15px;
+  color: $text-light;
+  font-weight: 600;
+  font-size: 1.8rem;
+  @include dark {
+    color: $text;
+  }
+  &:before {
+    border-left: 3px solid $accent;
+    content: "";
+    margin-right: 5px;
+  }
+}
+
+.h3-highlight {
+  border-bottom: 1px solid $accent;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  width: fit-content;
+  margin-left: 15px;
+  color: $text-light;
+  font-weight: 600;
+  @include dark {
+    color: $text;
+  }
+}
+
+.h2-highlight {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  width: fit-content;
+  margin-left: 15px;
+  color: $text-light;
+  font-weight: 600;
+  @include dark {
+    color: $text;
+  }
+  &:before {
+    border-left: 3px solid $accent;
+    content: "";
+    margin-right: 5px;
+  }
+}
+
+.highlight {
+  border-bottom: 1px solid $accent;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  width: fit-content;
+  margin-left: 15px;
+  color: $text-light;
+  font-weight: 600;
+  @include dark {
+    color: $text;
+  }
+}
+
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+
+  .hero {
+    position: relative;
+    .container {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      height: 500px;
+      align-items: flex-end;
+      line-height: 0.5;
+      svg * {
+        overflow: hidden;
+        z-index: 20;
+      }
+      .hero-logo {
+        position: absolute;
+        margin-top: 80px;
+        margin-right: 50px;
+        top: 0;
+        right: 0;
+        @include tablet() {
+          svg {
+            width: 300px;
+          }
+        }
+        @include mobile() {
+          svg {
+            margin-right: 0px;
+          }
+        }
+
+        #left-piece {
+          -webkit-animation: slide-left 0.5s
+            cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+        #right-piece {
+          -webkit-animation: slide-right 0.5s
+            cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          animation: slide-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+        #mid-piece {
+          -webkit-animation: fade-in 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+            both;
+          animation: fade-in 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          animation-delay: 300ms;
+        }
+      }
+    }
+  }
+
+  .hero-text {
+    margin-bottom: 50px;
+    margin-left: 50px;
+    color: $text-light;
+    @include dark() {
+      color: $text;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 600;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+    @include tablet() {
+      margin-left: 20px;
+    }
+    @include mobile() {
+      margin-left: 0;
+      h1 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+.topics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-row-gap: 8px;
+  grid-column-gap: 8px;
+  @include tablet() {
+    grid-template-columns: 1fr;
+  }
+  .topic {
+    border-radius: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    z-index: 2;
+    position: relative;
+    transition: all 0.2s;
+    &:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+      .overlay {
+        border-radius: unset;
+        box-shadow: unset;
+        backdrop-filter: unset;
+        -webkit-backdrop-filter: unset;
+        p {
+          transition: transform 0.2s;
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 13px;
+      position: absolute;
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.23);
+      border-radius: 13px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(1.5px);
+      -webkit-backdrop-filter: blur(1.5px);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      p {
+        transition: transform 0.2s;
+        color: $bg-light;
+        font-size: 1.5rem;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+      }
+    }
+  }
+}
+
+.sec-container {
+  margin: 7px;
+  @include tablet() {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.article-card {
+  background: $paper2-light;
+  color: $text-light;
+  padding: 20px;
+  padding-bottom: 40px;
+  border-radius: 13px;
+  margin: 7px;
+  margin-bottom: 5px;
+  height: 160px;
+  line-height: 0;
+  @include dark {
+    background: $paper;
+    color: $text;
+  }
+  @include tablet() {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  p {
+    font-size: 1rem;
+  }
+  a {
+    color: $accent;
+    @include dark {
+      color: $accent;
+    }
+  }
+
+  .article-info {
+    .article-card-header {
+      font-weight: 600;
+      font-size: 1.2rem;
+      line-height: 2rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      a {
+        color: unset;
+      }
+      &:hover {
+        color: $highlight;
+      }
+    }
+
+    .article-card-interactions {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+      span {
+        display: flex;
+        align-items: center;
+        color: $text2-light;
+        background-color: $paper3-light;
+        padding: 14px;
+        border-radius: 13px;
+        font-size: 0.8rem;
+        @include dark {
+          background-color: $paper3;
+          color: $text2;
+        }
+      }
+      a {
+        color: $text2;
+        @include dark {
+          color: $text2;
+        }
+      }
+    }
+  }
+}
+
+.tag {
+  margin-right: 8px;
+  color: $text2-light;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  @include dark {
+    color: $text2;
+  }
+}
+
+.article-card-author {
+  display: flex;
+  gap: 5px;
+  line-height: 0.4;
+  align-items: center;
+  line-height: 0.2rem;
+  margin-bottom: -8px;
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background: $highlight;
+    padding: 10px;
+  }
+  /* first child of p */
+  p {
+    color: $text2-light;
+    @include dark {
+      color: $text;
+    }
+  }
+  p:first-child {
+    font-weight: 600;
+  }
+}
+
+.a-button {
+  background: $paper2;
+  color: $bg-light;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  @include dark {
+    background: $paper2;
+    color: $text;
+  }
+
+  border: none;
+  border-radius: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+  &:hover {
+    background: $accent;
+    @include dark {
+      background: $accent;
+      color: $hover-color;
+    }
+  }
+}
+
+#current-article {
+  .banner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    .banner {
+      display: flex;
+      align-self: center;
+      justify-self: center;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+}
+pre {
+  padding: 10px;
+
+  code {
+    border-radius: 7px;
+  }
+}
+
+.single-article {
+  background: #ececec;
+  @include dark {
+    background: $article-bg;
+  }
+  .tags-content {
+    display: flex;
+    gap: 0px;
+    margin-top: 20px;
+  }
+  p > code {
+    border-radius: 3px;
+    padding: 2px;
+    background: $paper-light;
+    color: #c84f4e;
+    @include dark {
+      background: $text-light;
+    }
+  }
+  li > code {
+    border-radius: 3px;
+    padding: 2px;
+    background: $paper-light;
+    color: #c84f4e;
+    @include dark {
+      background: $text-light;
+    }
+  }
+
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: $text-light;
+    @include dark {
+      color: $text;
+    }
+  }
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $text-light;
+    @include dark {
+      color: $text;
+    }
+  }
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    border-bottom: unset;
+    margin-bottom: unset;
+    color: $text-light;
+    @include dark {
+      color: $text;
+    }
+  }
+  h4 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: $text-light;
+    @include dark {
+      color: $text;
+    }
+  }
+
+  ul {
+    padding-top: 10px;
+    list-style: disc;
+    padding-left: 20px;
+
+    li {
+      color: $text-light;
+      @include dark {
+        color: $text;
+      }
+    }
+  }
+}
+.likes-div {
+  padding-top: 30px;
+  .likes-tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    padding: 7px;
+    border-radius: 7px;
+    background: $border-light;
+    transition: all 0.2s;
+    color: $text2-light;
+
+    @include dark {
+      background: $paper2;
+      color: $text2;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background: $accent;
+      @include dark {
+        background: $accent;
+        color: $hover-color;
+      }
+    }
+  }
+}
+
+#comments {
+  padding: 15px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .comment-parent {
+    display: flex;
+    flex-direction: row;
+
+    .author-banner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 10px;
+      margin-top: 5px;
+      background: $paper2-light;
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+      img {
+        object-fit: contain;
+        width: 30px;
+        height: 30px;
+      }
+    }
+    .comment {
+      border: 1px solid $highlight;
+      border-radius: 13px;
+      flex-grow: 1;
+      padding: 10px;
+      .author-info {
+        display: flex;
+        flex-direction: row;
+        p:nth-child(1)::after {
+          content: "•";
+          color: $text2-light;
+          @include dark {
+            color: $text2;
+          }
+          margin-left: 5px;
+          margin-right: 5px;
+        }
+        p:nth-child(1) {
+          color: $text2-light;
+          @include dark {
+            color: $highlight;
+          }
+        }
+      }
+    }
+  }
+}
+
+hr {
+  border: 1px solid $border-light;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 98%;
+  @include dark {
+    border: 1px solid $border;
+  }
+}
+
+.text-container {
+  margin-left: 15px;
+  margin-right: 15px;
+  @include tablet() {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  label {
+    color: $text-light;
+    @include dark {
+      color: $text;
+    }
+  }
+  input {
+    padding: 10px;
+    border-radius: 7px;
+    border: none;
+    background: $paper2-light;
+    color: $text-light;
+    width: 300px;
+    &:focus {
+      outline: solid 2px $accent;
+    }
+    @include dark {
+      background: $paper2;
+      color: $text;
+    }
+  }
+  textarea {
+    padding: 10px;
+    border-radius: 13px;
+    border: none;
+    background: $paper2-light;
+    resize: none;
+    &:focus {
+      outline: solid 2px $accent;
+    }
+    color: $text-light;
+    @include dark {
+      background: $paper2;
+      color: $text;
+    }
+  }
+}
+
+.topic-filter {
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+  color: $text2;
+  margin-left: 13px;
+  margin-bottom: 30px;
+  .active-filter {
+    color: $highlight;
+    border-bottom: 1px solid $highlight;
+  }
+  li {
+    &:hover {
+      color: $highlight;
+      cursor: pointer;
+    }
+  }
+  option {
+    color: $hover-color;
+    @include dark {
+      color: $text2;
+    }
+    .active-filter {
+      color: $paper2;
+      border-bottom: 1px solid $highlight;
+      @include dark {
+        border-bottom: 1px solid $highlight;
+        color: $highlight;
+      }
+    }
+    &:hover {
+      color: $highlight;
+      cursor: pointer;
+    }
+  }
+}
+
+#all-articles {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr);
+  @include tablet() {
+    grid-template-columns: 1fr;
+  }
+}
+
+.articles-pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 13px;
+  margin-top: 30px;
+  color: $hover-color;
+  @include dark {
+    color: $text2;
+  }
+  .active-page {
+    color: $highlight;
+    border-bottom: 1px solid $highlight;
+  }
+  li {
+    &:hover {
+      color: $highlight;
+      cursor: pointer;
+    }
+  }
+}
+
+.author-card {
+  background: $paper2-light;
+  @include dark {
+    background: $paper2;
+  }
+  margin-top: 130px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 13px;
+  padding: 20px;
+  position: relative;
+  padding-top: 120px;
+  img {
+    object-fit: cover;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    width: 200px;
+    height: 200px;
+    border: 1px solid $bg-light;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    transform: translateY(-55%);
+    @include dark {
+      border: 10px solid $bg;
+    }
+  }
+  .author-site-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    line-height: 2px;
+    font-weight: 600;
+    h3 {
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: $text-light;
+      @include dark {
+        color: $text;
+      }
+    }
+  }
+}
+
+select {
+  padding: 10px;
+  border-radius: 7px;
+  border: none;
+  background: $paper2-light;
+  color: $text-light;
+  width: 320px;
+  &:focus {
+    outline: solid 2px $accent;
+  }
+  @include dark {
+    background: $paper2;
+    color: $text;
+  }
+}
+
+textarea {
+  font-family: "Reddit Sans", sans-serif;
+}
+
+.footer-container {
+  a > img {
+    width: 50px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  background: $paper-light;
+  color: $text-light;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include dark {
+    background: $paper;
+    color: $text;
+  }
+  p {
+  }
+}
+
+/* Animation */
+@-webkit-keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(-50px);
+    transform: translateX(-50px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(-50px);
+    transform: translateX(-50px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(50px);
+    transform: translateX(50px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(50px);
+    transform: translateX(50px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
