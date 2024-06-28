@@ -627,6 +627,7 @@ pre {
 
 .single-article {
   background: #ececec;
+  padding-bottom: 20px;
   @include dark {
     background: $article-bg;
   }
@@ -753,9 +754,9 @@ pre {
       height: 40px;
       width: 40px;
       img {
-        object-fit: contain;
-        width: 30px;
-        height: 30px;
+        object-fit: cover;
+        width: 40px;
+        height: 40px;
       }
     }
     .comment {
@@ -950,7 +951,7 @@ form {
     text-align: center;
     line-height: 2px;
     font-weight: 600;
-    h3 {
+    h2 {
       font-weight: 600;
       font-size: 1.5rem;
       color: $text-light;

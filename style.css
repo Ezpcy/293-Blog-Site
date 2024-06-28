@@ -623,6 +623,7 @@ pre code {
 
 .single-article {
   background: #ececec;
+  padding-bottom: 20px;
 }
 @media (prefers-color-scheme: dark) {
   .single-article {
@@ -768,10 +769,10 @@ pre code {
   width: 40px;
 }
 #comments .comment-parent .author-banner img {
-  -o-object-fit: contain;
-     object-fit: contain;
-  width: 30px;
-  height: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 40px;
+  height: 40px;
 }
 #comments .comment-parent .comment {
   border: 1px solid #8f8f8f;
@@ -988,13 +989,13 @@ form textarea:focus {
   line-height: 2px;
   font-weight: 600;
 }
-.author-card .author-site-info h3 {
+.author-card .author-site-info h2 {
   font-weight: 600;
   font-size: 1.5rem;
   color: #202020;
 }
 @media (prefers-color-scheme: dark) {
-  .author-card .author-site-info h3 {
+  .author-card .author-site-info h2 {
     color: #dadada;
   }
 }

@@ -1,7 +1,7 @@
 <h1>Typescript Setup</h1>
-<h2><strong>Step 1: Install Node.js</strong></h2>
+<h2>Step 1: Install Node.js</h2>
 <p>First, ensure you have Node.js installed. TypeScript runs on Node.js, so it's a prerequisite. You can download and install Node.js from <a href="https://nodejs.org/">nodejs.org</a>.</p>
-<h2><strong>Step 2: Initialize a New Project</strong></h2>
+<h2>Step 2: Initialize a New Project</h2>
 <p>If you’re starting a new project, create a new directory for your project and navigate into it:</p>
 <pre><code class="language-bash">mkdir my-typescript-project
 cd my-typescript-project
@@ -9,14 +9,14 @@ cd my-typescript-project
 <p>Initialize a new Node.js project:</p>
 <pre><code class="language-bash">npm init -y
 </code></pre>
-<p>This command creates a <strong><code>package.json</code></strong> file with default values.</p>
-<h2><strong>Step 3: Install TypeScript</strong></h2>
+<p>This command creates a <code>package.json</code> file with default values.</p>
+<h2>Step 3: Install TypeScript</h2>
 <p>Install TypeScript globally or locally in your project. For project-specific installations, use:</p>
 <pre><code class="language-bash">npm install --save-dev typescript
 </code></pre>
-<h2><strong>Step 1: Install Node.js</strong></h2>
+<h2>Step 1: Install Node.js</h2>
 <p>First, ensure you have Node.js installed. TypeScript runs on Node.js, so it's a prerequisite. You can download and install Node.js from <a href="https://nodejs.org/">nodejs.org</a>.</p>
-<h2><strong>Step 2: Initialize a New Project</strong></h2>
+<h2>Step 2: Initialize a New Project</h2>
 <p>If you’re starting a new project, create a new directory for your project and navigate into it:</p>
 <pre><code class="language-bash">mkdir my-typescript-project
 cd my-typescript-project
@@ -24,64 +24,64 @@ cd my-typescript-project
 <p>Initialize a new Node.js project:</p>
 <pre><code class="language-bash">npm init -y
 </code></pre>
-<p>This command creates a <strong><code>package.json</code></strong> file with default values.</p>
-<h2><strong>Step 3: Install TypeScript</strong></h2>
+<p>This command creates a <code>package.json</code> file with default values.</p>
+<h2>Step 3: Install TypeScript</h2>
 <p>Install TypeScript globally or locally in your project. For project-specific installations, use:</p>
 <pre><code class="language-bash">npm install --save-dev typescript
 </code></pre>
-<h2><strong>Step 4: Create a TypeScript Configuration File</strong></h2>
-<p>Create a <strong><code>tsconfig.json</code></strong> file in your project root. This file specifies the root files and the compiler options required to compile the project. You can create this file manually or generate it by running:</p>
+<h2>Step 4: Create a TypeScript Configuration File</h2>
+<p>Create a <code>tsconfig.json</code> file in your project root. This file specifies the root files and the compiler options required to compile the project. You can create this file manually or generate it by running:</p>
 <pre><code class="language-bash">npx tsc --init
 </code></pre>
-<p>This command sets up a default <strong><code>tsconfig.json</code></strong> with common settings. You might want to adjust some of these settings based on your project needs.</p>
-<h2><strong>Step 5: Write Some TypeScript</strong></h2>
-<p>Create a new file with a <strong><code>.ts</code></strong> extension, for example, <strong><code>index.ts</code></strong>:</p>
+<p>This command sets up a default <code>tsconfig.json</code> with common settings. You might want to adjust some of these settings based on your project needs.</p>
+<h2>Step 5: Write Some TypeScript</h2>
+<p>Create a new file with a <code>.ts</code> extension, for example, <code>index.ts</code>:</p>
 <pre><code class="language-tsx">function greet(person: string): string {
   return "Hello, " + person;
 }
 
 console.log(greet("World"));
 </code></pre>
-<h2><strong>Step 6: Compile TypeScript</strong></h2>
+<h2>Step 6: Compile TypeScript</h2>
 <p>Run the TypeScript compiler:</p>
 <pre><code class="language-bash">npx tsc
 </code></pre>
-<p>This command compiles your TypeScript code into JavaScript according to the settings in <strong><code>tsconfig.json</code></strong>.</p>
-<h2><strong>Step 7: Run Your JavaScript Code</strong></h2>
+<p>This command compiles your TypeScript code into JavaScript according to the settings in <code>tsconfig.json</code>.</p>
+<h2>Step 7: Run Your JavaScript Code</h2>
 <p>Run the compiled JavaScript with Node.js:</p>
 <pre><code class="language-bash">node index.js
 </code></pre>
 <p>This will execute the JavaScript output from your TypeScript code.</p>
-<h2><strong>Optional: Watch Mode</strong></h2>
+<h2>Optional: Watch Mode</h2>
 <p>For development, you might want to use the TypeScript compiler in watch mode. This will recompile your code automatically whenever you save a TypeScript file:</p>
 <pre><code class="language-bash">npx tsc --watch
 </code></pre>
-<p>This setup will get you started with TypeScript in a new project. As you progress, you might need to install additional typings for existing JavaScript libraries you are using, which can be done using DefinitelyTyped packages (<strong><code>@types/</code></strong> packages, e.g., <strong><code>npm install --save-dev @types/node</code></strong>).</p>
-<h2><strong>Step 4: Create a TypeScript Configuration File</strong></h2>
-<p>Create a <strong><code>tsconfig.json</code></strong> file in your project root. This file specifies the root files and the compiler options required to compile the project. You can create this file manually or generate it by running:</p>
+<p>This setup will get you started with TypeScript in a new project. As you progress, you might need to install additional typings for existing JavaScript libraries you are using, which can be done using DefinitelyTyped packages (<code>@types/</code> packages, e.g., <code>npm install --save-dev @types/node</code>).</p>
+<h2>Step 4: Create a TypeScript Configuration File</h2>
+<p>Create a <code>tsconfig.json</code> file in your project root. This file specifies the root files and the compiler options required to compile the project. You can create this file manually or generate it by running:</p>
 <pre><code class="language-bash">npx tsc --init
 </code></pre>
-<p>This command sets up a default <strong><code>tsconfig.json</code></strong> with common settings. You might want to adjust some of these settings based on your project needs.</p>
-<h2><strong>Step 5: Write Some TypeScript</strong></h2>
-<p>Create a new file with a <strong><code>.ts</code></strong> extension, for example, <strong><code>index.ts</code></strong>:</p>
+<p>This command sets up a default <code>tsconfig.json</code> with common settings. You might want to adjust some of these settings based on your project needs.</p>
+<h2>Step 5: Write Some TypeScript</h2>
+<p>Create a new file with a <code>.ts</code> extension, for example, <code>index.ts</code>:</p>
 <pre><code class="language-tsx">function greet(person: string): string {
   return "Hello, " + person;
 }
 
 console.log(greet("World"));
 </code></pre>
-<h2><strong>Step 6: Compile TypeScript</strong></h2>
+<h2>Step 6: Compile TypeScript</h2>
 <p>Run the TypeScript compiler:</p>
 <pre><code class="language-bash">npx tsc
 </code></pre>
-<p>This command compiles your TypeScript code into JavaScript according to the settings in <strong><code>tsconfig.json</code></strong>.</p>
-<h2><strong>Step 7: Run Your JavaScript Code</strong></h2>
+<p>This command compiles your TypeScript code into JavaScript according to the settings in <code>tsconfig.json</code>.</p>
+<h2>Step 7: Run Your JavaScript Code</h2>
 <p>Run the compiled JavaScript with Node.js:</p>
 <pre><code class="language-bash">node index.js
 </code></pre>
 <p>This will execute the JavaScript output from your TypeScript code.</p>
-<h2><strong>Optional: Watch Mode</strong></h2>
+<h2>Optional: Watch Mode</h2>
 <p>For development, you might want to use the TypeScript compiler in watch mode. This will recompile your code automatically whenever you save a TypeScript file:</p>
 <pre><code class="language-bash">npx tsc --watch
 </code></pre>
-<p>This setup will get you started with TypeScript in a new project. As you progress, you might need to install additional typings for existing JavaScript libraries you are using, which can be done using DefinitelyTyped packages (<strong><code>@types/</code></strong> packages, e.g., <strong><code>npm install --save-dev @types/node</code></strong>).</p>
+<p>This setup will get you started with TypeScript in a new project. As you progress, you might need to install additional typings for existing JavaScript libraries you are using, which can be done using DefinitelyTyped packages (<code>@types/</code> packages, e.g., <code>npm install --save-dev @types/node</code>).</p>
