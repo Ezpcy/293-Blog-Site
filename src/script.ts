@@ -42,9 +42,6 @@ function toggleMenu(isMenuOpen: boolean): boolean {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    localStorage.removeItem('topic');
-    
     const menu: HTMLElement | null = document.getElementById('mobile-menu-list');
     // Check if the menu is visible by inspecting its maxHeight property.
     let isMenuOpen: boolean | null = menu ? menu.style.maxHeight === '500px' : null;
@@ -74,12 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         rustTopics.addEventListener('click', () => {
             localStorage.setItem('topic', 'Rust');
-            localStorage.removeItem('currentPage');
+            localStorage.setItem('currentPage', '1');
         });
 
         webDevTopics.addEventListener('click', () => {
             localStorage.setItem('topic', 'WebDev');
-            localStorage.removeItem('currentPage');
+            localStorage.setItem('currentPage', '1');
         });
 
     }
@@ -130,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             e.preventDefault();
                             likes++;
                             likesElement.textContent = "❤️ " +likes.toString();
-                            //localStorage.setItem(articleIdNumber.toString(), 'true');
                             likeButton.style.pointerEvents = 'none'
                             likeButton.style.opacity = '0.8';
                             localStorage.setItem(articleIdNumber.toString(), 'true');
@@ -207,36 +203,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const allArticleSection = document.getElementById("all-articles");
     if (!allArticleSection) {
         localStorage.setItem('currentPage', '1');
-        localStorage.removeItem('topic');
+        localStorage.setItem('topic', 'All');
     }
     if(allArticleSection) {
-    
-
         const topicFilter = document.getElementById('topic-filter') as HTMLSelectElement;
-        const topics = ["All", "Rust", "WebDev"]
-        const topic = localStorage.getItem('topic');
-        topics.forEach(topica => {
-            const option = document.createElement('option');
-            option.id = "topicOption";
-            option.value = topica;
-            option.textContent = topica;
-            topicFilter.appendChild(option);
-            if (topic && topica === topic) {
-                option.className = 'active-filter';
-            }
-
-            if (!topic && topica === "All") {
-                option.className = 'active-filter';
-            }
-            option.addEventListener('click', () => {
-                localStorage.setItem('currentPage', '1');
-                localStorage.setItem('topic', topica);
-                /* clear url */
-                window.location.reload();
-                option.className = 'active-filter';
+        if (topicFilter) {
+            topicFilter.innerHTML = '';
+            const topics = ["All", "Rust", "WebDev"]
+            const topic = localStorage.getItem('topic');
+            topics.forEach(topica => {
+                const option = document.createElement('option');
+                option.id = "topicOption";
+                option.value = topica;
+                option.textContent = topica;
+                topicFilter.appendChild(option);
+                if (topic && topica === topic) {
+                    option.className = 'active-filter';
                 }
-            );
-        });
+
+                if (!topic && topica === "All") {
+                    option.className = 'active-filter';
+                }
+                option.addEventListener('click', () => {
+                    localStorage.setItem('currentPage', '1');
+                    localStorage.setItem('topic', topica);
+                    window.location.reload();
+                    option.className = 'active-filter';
+                    }
+                );
+            });
+        }
         
         fetchByTopic(localStorage.getItem("topic") || "All").then((articles: Articles) => {
 
@@ -252,6 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const pagination = document.getElementById('pagination');
             const currentPage = localStorage.getItem('currentPage');
             if (pagination) {
+                pagination.innerHTML = '';
                 for (let i = 1; i <= pages; i++) {
                     const pageLink = document.createElement('li');
                     if (currentPage && parseInt(currentPage) === i) {
