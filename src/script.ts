@@ -1,5 +1,5 @@
 
-import { fetchArticles, fetchArticle, Article, Articles, createAndAppendArticle, createAndAppendArticleContent, addComment, fetchByTopic } from "./articles";
+import { fetchArticles, fetchArticle, Article, Articles, createAndAppendArticle, createAndAppendArticleContent, fetchByTopic } from "./articles";
 import hljs from 'highlight.js/lib/core';
 import rust from 'highlight.js/lib/languages/rust';
 import shell from 'highlight.js/lib/languages/shell';
@@ -190,11 +190,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }    
 
     const allArticleSection = document.getElementById("all-articles");
+    if (!allArticleSection) {
+        localStorage.removeItem('currentPage');
+        localStorage.removeItem('topic');
+    }
     if(allArticleSection) {
         const urlParam = new URLSearchParams(window.location.search);
         const urlTopic = urlParam.get('topic');
         if (urlTopic) {
             localStorage.setItem('topic', urlTopic);
+
         } 
 
         const topicFilter = document.getElementById('topic-filter') as HTMLSelectElement;
@@ -207,6 +212,10 @@ document.addEventListener('DOMContentLoaded', () => {
             option.textContent = topica;
             topicFilter.appendChild(option);
             if (topic && topica === topic) {
+                option.className = 'active-filter';
+            }
+
+            if (!topic && topica === "All") {
                 option.className = 'active-filter';
             }
             option.addEventListener('click', () => {
@@ -228,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             const articleCount = articles.articles.length;
-            const pages = Math.ceil(articleCount / 5);
+            const pages = Math.ceil(articleCount / 6);
             const pagination = document.getElementById('pagination');
             const currentPage = localStorage.getItem('currentPage');
             if (pagination) {

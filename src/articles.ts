@@ -43,7 +43,7 @@ export async function fetchArticle(articleId:number):Promise<Article> {
 
     return article;
 }
-export async function addComment(articleId: number, newComment: Comment): Promise<Comment> {
+/* export async function addComment(articleId: number, newComment: Comment): Promise<Comment> {
     // Fetch the article first to get current comments using query parameter
     const response = await fetch("../articles/articles.json");
     const articles = await response.json() as Article;
@@ -65,7 +65,7 @@ export async function addComment(articleId: number, newComment: Comment): Promis
     }
 
     return newComment;
-}
+} */
  
 export async function addLike(articleId: number) {
     const response = await fetch('http://localhost:3001/articles/' + articleId);
