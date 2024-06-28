@@ -970,7 +970,7 @@ form textarea:focus {
   justify-self: center;
   width: 200px;
   height: 200px;
-  border: 1px solid #ffffff;
+  border: 13px solid #ffffff;
   border-radius: 50%;
   position: absolute;
   top: 0;
