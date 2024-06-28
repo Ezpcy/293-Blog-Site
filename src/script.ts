@@ -71,10 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         rustTopics.addEventListener('click', () => {
             localStorage.setItem('topic', 'Rust');
+            localStorage.removeItem('currentPage');
         });
 
         webDevTopics.addEventListener('click', () => {
             localStorage.setItem('topic', 'WebDev');
+            localStorage.removeItem('currentPage');
         });
 
     }
