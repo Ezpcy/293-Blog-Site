@@ -42,6 +42,9 @@ function toggleMenu(isMenuOpen: boolean): boolean {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    localStorage.removeItem('topic');
+    
     const menu: HTMLElement | null = document.getElementById('mobile-menu-list');
     // Check if the menu is visible by inspecting its maxHeight property.
     let isMenuOpen: boolean | null = menu ? menu.style.maxHeight === '500px' : null;
