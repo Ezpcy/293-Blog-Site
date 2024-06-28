@@ -66,6 +66,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 createAndAppendArticle(article, latestSection);
             });
         });
+        const rustTopics = document.getElementById('rust-topic-link') as HTMLElement;
+        const webDevTopics = document.getElementById('webdev-topic') as HTMLElement;
+
+        rustTopics.addEventListener('click', () => {
+            localStorage.setItem('topic', 'Rust');
+        });
+
+        webDevTopics.addEventListener('click', () => {
+            localStorage.setItem('topic', 'WebDev');
+        });
 
     }
 
@@ -195,12 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.removeItem('topic');
     }
     if(allArticleSection) {
-        const urlParam = new URLSearchParams(window.location.search);
-        const urlTopic = urlParam.get('topic');
-        if (urlTopic) {
-            localStorage.setItem('topic', urlTopic);
-
-        } 
+    
 
         const topicFilter = document.getElementById('topic-filter') as HTMLSelectElement;
         const topics = ["All", "Rust", "WebDev"]
@@ -221,6 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
             option.addEventListener('click', () => {
                 localStorage.setItem('currentPage', '1');
                 localStorage.setItem('topic', topica);
+                /* clear url */
                 window.location.reload();
                 option.className = 'active-filter';
                 }
