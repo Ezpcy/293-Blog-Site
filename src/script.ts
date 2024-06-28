@@ -44,7 +44,7 @@ function toggleMenu(isMenuOpen: boolean): boolean {
 document.addEventListener('DOMContentLoaded', () => {
     const menu: HTMLElement | null = document.getElementById('mobile-menu-list');
     // Check if the menu is visible by inspecting its maxHeight property.
-    let isMenuOpen: boolean | null = menu && menu.style.maxHeight !== '0px';
+    let isMenuOpen: boolean | null = menu ? menu.style.maxHeight === '500px' : null;
     const menuButton: HTMLElement | null = document.getElementById('toggleMenu');
     menuButton?.addEventListener('click', () => {
         isMenuOpen = toggleMenu(isMenuOpen!); // Update the isMenuOpen variable based on the returned value
