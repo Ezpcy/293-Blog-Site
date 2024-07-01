@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentPageNumber = parseInt(currentPage || '1');
             const start = (currentPageNumber - 1) * 6;
             const end = currentPageNumber * 6;
-            const currentArticles = articles.articles.slice(start, end);
+            const currentArticles = articles.articles.slice(start, end).reverse();
             currentArticles.map(article => {
                 createAndAppendArticle(article, allArticleSection);
             });

@@ -107,13 +107,17 @@ header {
   align-items: center;
   flex-direction: row;
 
-  background: $paper-light;
+  background: $paper2-light;
   color: $text-light;
   padding: 15px;
   position: relative;
   height: 30px;
   width: auto;
 
+  @include dark {
+    background: $paper;
+    color: $text;
+  }
   .desk-menu ul {
     display: none;
     display: flex;
@@ -144,10 +148,6 @@ header {
     }
   }
 
-  @include dark {
-    background: $paper;
-    color: $text;
-  }
   .mobile-menu {
     display: none;
   }
@@ -184,12 +184,12 @@ header {
       display: flex;
       ul {
         position: absolute;
-        border-bottom: 1px solid $border;
+        border-bottom: 1px solid $border-light;
         left: 0;
         max-height: 0px;
         overflow: hidden;
         width: 100%;
-        background: $paper-light;
+        background: $paper2-light;
         color: $text-light;
         top: 100%;
         z-index: 100;
@@ -203,9 +203,9 @@ header {
           display: block;
           padding: 30px;
           display: flex;
+          border-bottom: 1px solid $border-light;
           justify-content: center;
           align-items: center;
-          border-bottom: 1px solid $border-light;
           &:last-child {
             border-bottom: none;
           }
@@ -521,7 +521,7 @@ main {
         display: flex;
         align-items: center;
         color: $text2-light;
-        background-color: $paper3-light;
+        background-color: $paper-light;
         padding: 14px;
         border-radius: 13px;
         font-size: 0.8rem;
@@ -1000,7 +1000,7 @@ textarea {
     height: 40px;
     margin-right: 10px;
   }
-  background: $paper-light;
+  background: $paper2-light;
   color: $text-light;
   padding: 20px;
   display: flex;
