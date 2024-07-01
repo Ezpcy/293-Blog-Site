@@ -369,6 +369,11 @@ main .hero-text p {
   }
 }
 
+.h1-404 {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
 .topics {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1056,7 +1061,7 @@ textarea {
     color: #dadada;
   }
 }
-/* Animation */
+/* Animations */
 @keyframes slide-left {
   0% {
     transform: translateX(-50px);

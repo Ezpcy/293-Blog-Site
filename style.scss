@@ -390,6 +390,11 @@ main {
   }
 }
 
+.h1-404 {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
 .topics {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1021,7 +1026,7 @@ textarea {
   }
 }
 
-/* Animation */
+/* Animations */
 @-webkit-keyframes slide-left {
   0% {
     -webkit-transform: translateX(-50px);
