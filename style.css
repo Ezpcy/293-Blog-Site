@@ -541,6 +541,15 @@ main .hero-text p {
   }
 }
 
+ol {
+  color: #202020;
+}
+@media (prefers-color-scheme: dark) {
+  ol {
+    color: #dadada;
+  }
+}
+
 .article-card-author {
   display: flex;
   gap: 5px;

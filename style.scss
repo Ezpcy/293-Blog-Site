@@ -551,6 +551,13 @@ main {
   }
 }
 
+ol {
+  color: $text-light;
+  @include dark {
+    color: $text;
+  }
+}
+
 .article-card-author {
   display: flex;
   gap: 5px;
