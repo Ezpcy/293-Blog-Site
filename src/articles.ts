@@ -35,7 +35,6 @@ export async function fetchArticles():Promise<Articles> {
 export async function fetchArticle(articleId:number):Promise<Article> {
     const response = await fetch("../articles/articles.json");
     const articles = await response.json() as Articles;
-    console.log(articleId)
     const article = articles.articles.find(thisOne => thisOne.id === articleId)
     if (!article) {
         throw new Error('Article not found');
@@ -240,6 +239,7 @@ export function createAndAppendArticleContent(article: Article, articleSection: 
     articleSection.appendChild(articleElement);
 
     const commentDiv = document.getElementById('comments') as HTMLElement;
+    commentDiv.textContent = '';
     if (article.comments.length === 0) {
         const noComment = document.createElement('p');
         noComment.textContent = 'No comments yet, be the first to comment!';

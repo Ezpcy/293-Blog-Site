@@ -372,6 +372,12 @@ main .hero-text p {
 .h1-404 {
   font-size: 3rem;
   font-weight: 600;
+  color: #202020;
+}
+@media (prefers-color-scheme: dark) {
+  .h1-404 {
+    color: #dadada;
+  }
 }
 
 .topics {

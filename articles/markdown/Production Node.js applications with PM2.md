@@ -95,8 +95,6 @@ PM2 is a popular process manager for Node.js applications. It helps in managing 
 
 ## **Additional Notes:**
 
-<br/>
-
 - **PM2 Configuration File:** You can also manage applications using an ecosystem configuration file (**`ecosystem.config.js`**), which allows for more complex setups.
 - **Cluster Mode:** Useful for taking full advantage of multi-core systems, but it's important to note that not all applications are suitable for running in cluster mode.
 - **Environment Variables:** PM2 allows you to inject environment variables directly from the command line or via an ecosystem file.

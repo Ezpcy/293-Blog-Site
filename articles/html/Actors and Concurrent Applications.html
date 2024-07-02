@@ -13,7 +13,7 @@ pub enum Messages {
 }
 </code></pre>
 <ul>
-<li>Here we define an enum called <code>Messages</code> that implements the <code>Message</code> trait. When i send a message to the actorm, it can be one of the following:</li>
+<li>Here we define an enum called <code>Messages</code> that implements the <code>Message</code> trait. When i send a message to the actor, it can be one of the following:</li>
 <li><code>ValidateRequest</code> - This message accept a <code>JsonRequest</code>.</li>
 <li><code>CreateConfig</code> - This message accepts a <code>Value</code> which is parsed form a Json.</li>
 <li><code>GetConfig</code> - This message does not accept any data but returns one of the <code>Responses</code> which we will define.</li>

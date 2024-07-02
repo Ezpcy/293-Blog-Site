@@ -393,6 +393,10 @@ main {
 .h1-404 {
   font-size: 3rem;
   font-weight: 600;
+  color: $text-light;
+  @include dark {
+    color: $text;
+  }
 }
 
 .topics {

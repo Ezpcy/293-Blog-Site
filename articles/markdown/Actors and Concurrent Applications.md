@@ -20,7 +20,7 @@ pub enum Messages {
 }
 ```
 
-- Here we define an enum called `Messages` that implements the `Message` trait. When i send a message to the actorm, it can be one of the following:
+- Here we define an enum called `Messages` that implements the `Message` trait. When i send a message to the actor, it can be one of the following:
 - `ValidateRequest` - This message accept a `JsonRequest`.
 - `CreateConfig` - This message accepts a `Value` which is parsed form a Json.
 - `GetConfig` - This message does not accept any data but returns one of the `Responses` which we will define.
