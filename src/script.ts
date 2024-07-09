@@ -86,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const articleSection: HTMLElement | null = document.getElementById('current-article');
 
     if (articleSection) {
+        articleSection.textContent = 'Loading...';
         const lightThemeLink: HTMLLinkElement= document.getElementById('lightTheme') as HTMLLinkElement;
         const darkThemeLink: HTMLLinkElement = document.getElementById('darkTheme') as HTMLLinkElement;
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -180,9 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const commentDate = document.createElement('p');
             commentDate.className = 'comment-date';
             
-            const options: Intl.DateTimeFormatOptions = { month: 'short', day: '2-digit', year: 'numeric'};
+            const options: Intl.DateTimeFormatOptions = { month: 'short', day: '2-digit'};
             const dates = new Date();
-            commentDate.textContent = dates.toLocaleDateString("en-US", options); 
+            commentDate.textContent = dates.toLocaleDateString("en-US", options).split(' ').slice(0, 2).join(' '); 
 
             const commentContent = document.createElement('p');
             commentContent.className = 'comment-content';

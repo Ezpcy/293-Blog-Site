@@ -240,6 +240,7 @@ export function createAndAppendArticleContent(article: Article, articleSection: 
 
     const commentDiv = document.getElementById('comments') as HTMLElement;
     commentDiv.textContent = '';
+    commentDiv.childNodes.forEach(node => node.remove());
     if (article.comments.length === 0) {
         const noComment = document.createElement('p');
         noComment.textContent = 'No comments yet, be the first to comment!';
