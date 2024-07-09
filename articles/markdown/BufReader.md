@@ -2,7 +2,7 @@
 
 Reading files with a buffer in Rust can be efficient, especially for large files or streams, as it allows you to manage how much data you read into memory at once. Rust's standard library provides several ways to read files, but for buffered reading, you'll typically use the **`BufReader`** struct from the **`std::io`** module. Here's a straightforward step-by-step guide to get you started:
 
-## **Step 1: Open the File**
+## Step 1: Open the File
 
 First, you need to open the file you want to read. You can use the **`File`** struct from the **`std::fs`** module for this purpose.
 
@@ -12,7 +12,7 @@ use std::fs::File;
 let file = File::open("path/to/your/file.txt").expect("Failed to open file");
 ```
 
-## **Step 2: Create a Buffered Reader**
+## Step 2: Create a Buffered Reader
 
 Once you have a **`File`** instance, you can wrap it in a **`BufReader`** to read the file in chunks. The **`BufReader`** struct is found in the **`std::io`** module.
 
@@ -22,7 +22,7 @@ use std::io::BufReader;
 let reader = BufReader::new(file);
 ```
 
-## **Step 3: Read from the Buffered Reader**
+## Step 3: Read from the Buffered Reader
 
 There are several ways to read from a **`BufReader`**, depending on your needs. For example, you can read line by line, read a specific number of bytes at a time, or read until a certain condition is met.
 
@@ -50,7 +50,7 @@ let bytes_read = reader.read(&mut buffer).expect("Failed to read data");
 println!("Bytes read: {}", bytes_read);
 ```
 
-## **Complete Example**
+## Complete Example
 
 Combining all the steps, here's a complete example that opens a file, wraps it in a **`BufReader`**, and reads it line by line:
 
